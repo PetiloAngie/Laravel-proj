@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 const SubmitForm = () => {
@@ -26,7 +26,7 @@ const SubmitForm = () => {
         setMessage('');
 
         try {
-            const response = await axios.post('/api/profiles', formData, {
+            const response = await axios.post('api/profiles', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
@@ -126,8 +126,7 @@ const SubmitForm = () => {
 
 // Mount the component
 if (document.getElementById('app')) {
-    const root = ReactDOM.createRoot(document.getElementById('app'));
-    root.render(<SubmitForm />);
+    ReactDOM.render(<SubmitForm />, document.getElementById('app'));
 }
 
 export default SubmitForm;

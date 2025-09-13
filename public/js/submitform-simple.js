@@ -1,4 +1,6 @@
-// Simple JavaScript version for profile submission form
+// Simple JavaScript version for profile submission form with profiles list
+// Uses relative API paths so it works under XAMPP subfolders
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('profile-form');
     const messageDiv = document.getElementById('message');
@@ -26,11 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             
             const submitBtn = form.querySelector('button[type="submit"]');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+            }
             
             try {
-                const response = await fetch('/api/profiles', {
+                const response = await fetch('api/profiles', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -57,8 +61,10 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 messageDiv.innerHTML = '<div class="alert alert-danger">Network error occurred. Please try again.</div>';
             } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Profile';
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Profile';
+                }
             }
         });
     }
@@ -78,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         
         try {
-            const response = await fetch('/api/profiles');
+            const response = await fetch('api/profiles');
             const result = await response.json();
             
             if (response.ok && result.profiles) {

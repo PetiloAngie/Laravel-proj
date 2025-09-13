@@ -1,5 +1,6 @@
 <?php
 
+// Import required classes for handling HTTP requests and routing
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -21,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/profiles', [ProfileController::class, 'index']);
 Route::post('/profiles', [ProfileController::class, 'store']);
+Route::put('/profiles/{profile}', [ProfileController::class, 'update']);
+Route::delete('/profiles/{profile}', [ProfileController::class, 'destroy']);

@@ -21,64 +21,8 @@
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="row">
-            <!-- Profile Form -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Submit Profile</h4>
-                    </div>
-                    <div class="card-body">
-                        <form id="profile-form">
-                            <div class="mb-3">
-                                <label for="first_name" class="form-label">First Name</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="first_name"
-                                    name="first_name"
-                                    required
-                                />
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="last_name" class="form-label">Last Name</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    id="last_name"
-                                    name="last_name"
-                                    required
-                                />
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="age" class="form-label">Age</label>
-                                <input
-                                    type="number"
-                                    class="form-control"
-                                    id="age"
-                                    name="age"
-                                    min="1"
-                                    max="150"
-                                    required
-                                />
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">
-                                Submit Profile
-                            </button>
-                        </form>
-
-                        <div id="message" class="mt-3"></div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
+    <div id="app"></div>
     
-    <script src="{{ asset('js/submitform-simple.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
